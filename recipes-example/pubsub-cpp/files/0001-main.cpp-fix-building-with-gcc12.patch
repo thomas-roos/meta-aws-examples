@@ -1,0 +1,28 @@
+From 1241db2e83a236edc50c162dfe1620fd3d9a2076 Mon Sep 17 00:00:00 2001
+From: Thomas Roos <throos@amazon.com>
+Date: Wed, 20 Jul 2022 08:22:21 +0000
+Subject: [PATCH] main.cpp: fix building with gcc12
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+error: ‘sleep_for’ is not a member of ‘std::this_thread’
+---
+ samples/pub_sub/basic_pub_sub/main.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/samples/pub_sub/basic_pub_sub/main.cpp b/samples/pub_sub/basic_pub_sub/main.cpp
+index b2d813ca..ed16418b 100644
+--- a/samples/pub_sub/basic_pub_sub/main.cpp
++++ b/samples/pub_sub/basic_pub_sub/main.cpp
+@@ -13,6 +13,7 @@
+ #include <aws/crt/UUID.h>
+ #include <chrono>
+ #include <mutex>
++#include <thread>
+ 
+ #include "../../utils/CommandLineUtils.h"
+ 
+-- 
+2.25.1
+
